@@ -1,4 +1,6 @@
 # gostu
+[![Build Status](https://travis-ci.org/gsingharoy/gostu.svg?branch=master)](https://travis-ci.org/gsingharoy/gostu)
+
 Contains some implementations of simple data structures in Go.
 
 ## Stack
