@@ -1,4 +1,4 @@
-package gostu
+package stack
 
 import "errors"
 
