@@ -1,26 +1,26 @@
-package gostu
+package stack
 
 // Simple Stack data structure
 // This is a unidirectional simple data structure
 // read here to know more about stacks : https://www.geeksforgeeks.org/stack-data-structure/
 type Stack struct {
-	top *stackField
+	top *node
 }
 
-type stackField struct {
+type node struct {
 	value interface{}
-	next  *stackField
+	next  *node
 }
 
 // NewStack() returns a pointer to a newly created empty Stack instance
-func NewStack() *Stack {
+func New() *Stack {
 	return &Stack{}
 }
 
 // Push(v interface{}) returns an error value
 // This method 'pushed' a value to the stack
 func (s *Stack) Push(v interface{}) error {
-	newField := &stackField{value: v, next: s.top}
+	newField := &node{value: v, next: s.top}
 	s.top = newField
 	return nil
 }

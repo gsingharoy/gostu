@@ -1,11 +1,11 @@
-package gostu
+package stack
 
 import (
 	"testing"
 )
 
-func TestNewStack(t *testing.T) {
-	s := NewStack()
+func TestNew(t *testing.T) {
+	s := New()
 	if s.top != nil {
 		t.Error("Expected top to be initialized to a null pointer")
 	}
@@ -13,7 +13,7 @@ func TestNewStack(t *testing.T) {
 
 func TestStackPush(t *testing.T) {
 	t.Log("adding to an empty stack")
-	s := NewStack()
+	s := New()
 	err1 := s.Push(45)
 	if err1 != nil {
 		t.Error("expected no error")
@@ -43,7 +43,7 @@ func TestStackPush(t *testing.T) {
 
 func TestStackPop(t *testing.T) {
 	t.Log("popping from an empty stack")
-	s := NewStack()
+	s := New()
 	_, err := s.Pop()
 	if err != ErrEmptyStack {
 		t.Error("expected error")
@@ -70,7 +70,7 @@ func TestStackPop(t *testing.T) {
 func TestStackIsEmpty(t *testing.T) {
 	t.Log("when stack is empty")
 
-	s := NewStack()
+	s := New()
 	if !s.IsEmpty() {
 		t.Error("expected stack to be empty")
 	}
@@ -85,10 +85,24 @@ func TestStackIsEmpty(t *testing.T) {
 func TestStackTop(t *testing.T) {
 	t.Log("when stack is empty")
 
-	s := NewStack()
+	s := New()
 
 	_, err := s.Top()
 	if err != ErrEmptyStack {
 		t.Error("expected ErrEmptyStack to be returned")
+	}
+
+	s.Push(34)
+
+	v1, _ := s.Top()
+	if v1 != 34 {
+		t.Error("Expected the top node value")
+	}
+
+	s.Push(35)
+	s.Push(78)
+	v2, _ := s.Top()
+	if v2 != 78 {
+		t.Error("Expected the top node value")
 	}
 }
