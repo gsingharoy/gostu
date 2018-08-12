@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestNewStack(t *testing.T) {
+func TestNew(t *testing.T) {
 	s := New()
 	if s.top != nil {
 		t.Error("Expected top to be initialized to a null pointer")
@@ -90,5 +90,19 @@ func TestStackTop(t *testing.T) {
 	_, err := s.Top()
 	if err != ErrEmptyStack {
 		t.Error("expected ErrEmptyStack to be returned")
+	}
+
+	s.Push(34)
+
+	v1, _ := s.Top()
+	if v1 != 34 {
+		t.Error("Expected the top node value")
+	}
+
+	s.Push(35)
+	s.Push(78)
+	v2, _ := s.Top()
+	if v2 != 78 {
+		t.Error("Expected the top node value")
 	}
 }
